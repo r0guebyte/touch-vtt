@@ -208,9 +208,11 @@ Hooks.once("init", () => {
     }, "MIXED")
 
     // This wrap is used for wall chaining: when the chain button is active, pretend we are holding Ctrl
+    // It's also used to rotate v14+ Region placement previews from the touch HUD
     wrapMethod("game.keyboard.isModifierActive", function(originalMethod, modifier) {
       let result = originalMethod.call(this, modifier)
       result ||= callbackForWallTools(modifier)
+      result ||= measuredTemplateManager.callbackForModifier(modifier)
       return result
     }, "MIXED")
 
@@ -224,7 +226,8 @@ Hooks.once("init", () => {
 })
 
 Hooks.on("canvasReady", function() {
-  if (getSetting(CORE_FUNCTIONALITY) || false) {
+  // v14+ has no Measured Templates (and no canvas.templates): Region placement is handled in MeasuredTemplateManager
+  if ((getSetting(CORE_FUNCTIONALITY) || false) && game.release.generation < 14) {
     // This (together with the hud init in the ready hook) gives the user a touch-friendly UI for pre-made templates (like from an automatic "Place Measured Template" chat button, or MidiQOL)
     canvas.templates.preview.on("childAdded", measuredTemplateManager.onTemplatePreviewCreated.bind(measuredTemplateManager))
   }

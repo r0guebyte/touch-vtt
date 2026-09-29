@@ -1,8 +1,9 @@
 import {MODULE_NAME, MODULE_DISPLAY_NAME} from "./ModuleConstants.js"
 import CanvasTouchPointerEventsManager from "../logic/CanvasTouchPointerEventsManager.js"
 import {getSetting, ZOOM_THRESHOLD_SETTING, PAN_THRESHOLD_SETTING} from "./TouchSettings.js"
+import {FormApplicationV1} from "../foundryvtt/FoundryUtils.js"
 
-export class GestureCalibrationMenu extends FormApplication {
+export class GestureCalibrationMenu extends FormApplicationV1 {
   constructor() {
     super()
     this.canvasTouchPointerEventsManager = null
@@ -29,7 +30,7 @@ export class GestureCalibrationMenu extends FormApplication {
   }
 
   async _updateObject(event, formData) {
-    const data = expandObject(formData)
+    const data = foundry.utils.expandObject(formData)
     for (let setting in data) {
       game.settings.set(MODULE_NAME, setting, data[setting])
     }

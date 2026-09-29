@@ -1,10 +1,11 @@
 import {MODULE_NAME} from "../config/ModuleConstants"
 import {wrapMethod} from "../utils/Injection"
+import {ApplicationV1} from "../foundryvtt/FoundryUtils"
 import FoundryCanvas from "../foundryvtt/FoundryCanvas"
 import Vectors from "../logic/Vectors.js"
 import {getSetting, MEASUREMENT_HUD_LEFT, MEASUREMENT_HUD_OFF, MEASUREMENT_HUD_SETTING} from "../config/TouchSettings.js"
 
-class TouchMeasurementHud extends Application {
+class TouchMeasurementHud extends ApplicationV1 {
   constructor({ touchPointerEventsManager }) {
     super()
 

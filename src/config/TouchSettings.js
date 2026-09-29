@@ -2,6 +2,7 @@ import {MODULE_NAME, MODULE_DISPLAY_NAME} from "./ModuleConstants.js"
 import {updateButtonSize} from "../tools/EnlargeButtonsTool"
 import {toggleUtilityControls} from "../tools/UtilityControls.js"
 import {GestureCalibrationMenu} from "./GestureCalibrationMenu.js"
+import {FormApplicationV1, DialogV1} from "../foundryvtt/FoundryUtils.js"
 
 export const CORE_FUNCTIONALITY = "core"
 
@@ -57,7 +58,7 @@ export function getSetting(settingName) {
   return overrideSettingValue  
 }
 
-class SettingsOverrideMenu extends FormApplication {
+class SettingsOverrideMenu extends FormApplicationV1 {
   constructor() {
     super()
   }
@@ -90,7 +91,7 @@ class SettingsOverrideMenu extends FormApplication {
   }
 
   async _updateObject(event, formData) {
-    const data = expandObject(formData)
+    const data = foundry.utils.expandObject(formData)
     for (let setting in data) {
       game.settings.set(MODULE_NAME, setting, data[setting])
     }
@@ -98,7 +99,7 @@ class SettingsOverrideMenu extends FormApplication {
   }
 
   async reloadConfirm() {
-    const reload = await Dialog.confirm({
+    const reload = await DialogV1.confirm({
       title: game.i18n.localize("SETTINGS.ReloadPromptTitle"),
       content: `<p>${game.i18n.localize("SETTINGS.ReloadPromptBody")}</p>`
     })
