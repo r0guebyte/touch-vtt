@@ -62,8 +62,8 @@ class FoundryCanvas {
 
   get worldSize() {
     return {
-      x: this.raw.scene.data.width,
-      y: this.raw.scene.data.height,
+      x: this.raw.scene.width,
+      y: this.raw.scene.height,
     }
   }
 

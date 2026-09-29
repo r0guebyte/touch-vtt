@@ -1,4 +1,4 @@
-![Foundry Version 12](https://img.shields.io/badge/Foundry%20Version-13-green)
+![Foundry Version 14](https://img.shields.io/badge/Foundry%20Version-14-green)
 ![Download Count](https://img.shields.io/github/downloads/Oromis/touch-vtt/total?color=purple&label=Downloads%20%28Total%29)
 ![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Ftouch-vtt&colorB=4aa94a)
 
@@ -20,7 +20,10 @@ Features:
  - Move windows around and interact with their content intuitively
  - Removing measurement templates usually requires you to press the DELETE key on your keyboard. TouchVTT 
     adds an eraser tool to the measurement templates menu that can be used with touch controls. First tap 
-    the eraser tool, then tap the template you want to remove.
+    the eraser tool, then tap the template you want to remove. (Foundry v13 and earlier - in v14, templates are 
+    Scene Regions and use the core Region tools.)
+ - Place pre-made templates (e.g. from a system's "Place Template" chat button) with a touch-friendly 
+    rotate/confirm/cancel HUD. In Foundry v14 this works with the new Region placement workflow.
  - Additional wall placement tools that work with touch controls
  - Enlarge the menu buttons (on the left) to make them easier to use with touch controls
  - Play/Pause button for GMs under Foundry logo
@@ -86,6 +89,9 @@ when those features are locked in "Lock View".
 
 ### Changelog
 
+- **Foundry v14 support:** Verified compatibility bumped to v14. Measured Template features were adapted to v14's 
+    Scene Regions (touch HUD for `canvas.regions.placeRegion` placements), and Application V1 classes are now 
+    accessed through their `foundry.appv1` namespace where available.
 - **2.2.8:** Added zoom/pan gesture sensitivity calibration in the settings
 - **2.2.0:** Added two-finger scrolling gesture in all application windows
 - **2.1.0:** Added scroll support for directories with draggable items
